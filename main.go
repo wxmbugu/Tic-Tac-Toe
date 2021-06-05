@@ -11,9 +11,9 @@ import (
 func bmarker(board [9]string) [9]string {
 	fmt.Println("The board now looks like this:")
 	fmt.Println("-------")
-	fmt.Println("|" + board[0] + " | " + board[1] + "| " + board[2] + "|")
-	fmt.Println("|" + board[3] + " | " + board[4] + "| " + board[5] + "|")
-	fmt.Println("|" + board[6] + " | " + board[7] + "| " + board[8] + "|")
+	fmt.Println("|" + board[0] + "|" + board[1] + "|" + board[2] + "|")
+	fmt.Println("|" + board[3] + "|" + board[4] + "|" + board[5] + "|")
+	fmt.Println("|" + board[6] + "|" + board[7] + "|" + board[8] + "|")
 	fmt.Println("-------")
 	return board
 
@@ -34,7 +34,7 @@ func boardprinter() {
 //Step 4:Checking rules of the game or winner and draws
 
 func placepiece(board *[9]string, position string, player string) {
-	var symbol = " "
+	var symbol string
 	if player == "cpu" {
 		symbol = "X"
 		fmt.Println("Player X(comp) is playing... ")
@@ -51,43 +51,86 @@ func placepiece(board *[9]string, position string, player string) {
 	}
 	switch position {
 	case "a":
-		board[0] = symbol
+		if board[0] == "" {
+			board[0] = symbol
+		} else {
+			fmt.Println("Position is filled , enter another position")
+			placepiece(board, position, player)
+		}
 		break
 	case "b":
-		board[1] = symbol
+		if board[1] == "" {
+			board[1] = symbol
+		} else {
+			fmt.Println("Position is filled , enter another position")
+			placepiece(board, position, player)
+		}
 		break
 	case "c":
-		board[2] = symbol
+		if board[2] == "" {
+			board[2] = symbol
+		} else {
+			fmt.Println("Position is filled , enter another position")
+			placepiece(board, position, player)
+		}
 		break
 	case "d":
-		board[3] = symbol
+		if board[3] == "" {
+			board[3] = symbol
+		} else {
+			fmt.Println("Position is filled , enter another position")
+			placepiece(board, position, player)
+		}
 		break
 	case "e":
-		board[4] = symbol
+		if board[4] == "" {
+			board[4] = symbol
+		} else {
+			fmt.Println("Position is filled , enter another position")
+			placepiece(board, position, player)
+		}
 		break
 	case "f":
-		board[5] = symbol
+		if board[5] == "" {
+			board[5] = symbol
+		} else {
+			fmt.Println("Position is filled , enter another position")
+			placepiece(board, position, player)
+		}
 		break
 	case "g":
-		board[6] = symbol
+		if board[6] == "" {
+			board[6] = symbol
+		} else {
+			fmt.Println("Position is filled , enter another position")
+			placepiece(board, position, player)
+		}
 		break
 	case "h":
-		board[7] = symbol
+		if board[7] == "" {
+			board[7] = symbol
+		} else {
+			fmt.Println("Position is filled , enter another position")
+			placepiece(board, position, player)
+		}
 		break
 	case "i":
-		board[8] = symbol
+		if board[8] == "" {
+			board[8] = symbol
+		} else {
+			fmt.Println("Position is filled , enter another position")
+			placepiece(board, position, player)
+		}
 		break
 	default:
 		fmt.Println("***WARNING***")
-		fmt.Println("That was an invalid entry. Please try again player")
+		fmt.Println("That was an invalid entry. Please try again player:", symbol)
 		placepiece(board, position, player)
 		break
 	}
-	bmarker(*board)
 }
 
-func main() {
-	boardprinter()
+func play(board *[9]string) {
 	var ttt [9]string
 	var position string
 
@@ -95,9 +138,74 @@ func main() {
 		cpuPos := randomStr(1)
 		placepiece(&ttt, position, "player")
 		placepiece(&ttt, cpuPos, "cpu")
-		//display how the board is looking
 		bmarker(ttt)
+		//Wins by matching the first row
+		if ttt[0] == ttt[1] {
+			if ttt[1] == ttt[2] {
+				if ttt[0] != "" {
+					fmt.Printf("Player,%s wins :\n", position)
+					break
+				}
+			}
+		}
+		//Wins by matching the middle  row
+		if ttt[3] == ttt[4] {
+			if ttt[4] == ttt[5] {
+				fmt.Printf("Player,%s wins :\n", position)
+				break
+			}
+		}
+		//Wins by matching the last row
+		if ttt[6] == ttt[7] {
+			if ttt[7] == ttt[8] {
+				fmt.Printf("Player,%s wins :\n", position)
+				break
+			}
+		}
+		//Wins by matching the left diagnol row
+		if ttt[0] == ttt[4] {
+			if ttt[4] == ttt[8] {
+				fmt.Printf("Player,%s wins :\n", position)
+				break
+			}
+		}
+		//Wins by matching the right diagnol row
+		if ttt[2] == ttt[4] {
+			if ttt[4] == ttt[6] {
+				fmt.Printf("Player,%s wins :\n", position)
+				break
+			}
+		}
+		//wins by matching the first row
+		if ttt[0] == ttt[3] {
+			if ttt[3] == ttt[6] {
+				fmt.Printf("Player,%s wins :\n", position)
+				break
+			}
+		}
+		//wins by matching the middle row
+		if ttt[1] == ttt[4] {
+			if ttt[4] == ttt[7] {
+				fmt.Printf("Player,%s wins :\n", position)
+				break
+			}
+		}
+		//wins by matching the last row
+		if ttt[2] == ttt[5] {
+			if ttt[5] == ttt[8] {
+				fmt.Printf("Player,%s wins :\n", position)
+				break
+			}
+		}
+
 	}
+}
+
+func main() {
+	var ttt [9]string
+
+	boardprinter()
+	play(&ttt)
 
 }
 
