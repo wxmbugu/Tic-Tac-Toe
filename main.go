@@ -33,7 +33,7 @@ func boardprinter() {
 //Step 3:Players
 //Step 4:Checking rules of the game or winner and draws
 
-func placepiece(board [9]string, position string, player string) {
+func placepiece(board *[9]string, position string, player string) {
 	var symbol = " "
 	if player == "cpu" {
 		symbol = "X"
@@ -83,7 +83,7 @@ func placepiece(board [9]string, position string, player string) {
 		placepiece(board, position, player)
 		break
 	}
-	bmarker(board)
+	bmarker(*board)
 }
 
 func main() {
@@ -91,15 +91,16 @@ func main() {
 	var ttt [9]string
 	var position string
 
-	//Only lowercase random letters
 	for true {
 		cpuPos := randomStr(1)
-		placepiece(ttt, position, "player")
-		placepiece(ttt, cpuPos, "cpu")
+		placepiece(&ttt, position, "player")
+		placepiece(&ttt, cpuPos, "cpu")
 	}
 
 }
 
+//function to get random letters from (a-i)
+//so as to randomise game play with computer instead of using an ai
 func randomStr(length int) string {
 	rand.Seed(time.Now().Unix())
 	charSet := "abcdefghi"
