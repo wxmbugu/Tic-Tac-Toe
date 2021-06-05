@@ -95,6 +95,8 @@ func main() {
 		cpuPos := randomStr(1)
 		placepiece(&ttt, position, "player")
 		placepiece(&ttt, cpuPos, "cpu")
+		//display how the board is looking
+		bmarker(ttt)
 	}
 
 }
