@@ -127,18 +127,18 @@ func play() {
 	var ttt [9]string
 	var position string
 	var winner string
-
 	for {
 		cpuPos := randomStr(1)
 		placepiece(&ttt, position, "player")
 		placepiece(&ttt, cpuPos, "cpu")
 		bmarker(ttt)
+
 		//Wins by matching the first row
 		if ttt[0] == ttt[1] {
 			if ttt[1] == ttt[2] {
 				if ttt[2] != "" {
 					winner = ttt[2]
-					fmt.Printf("Player,%s wins :\n", winner)
+					fmt.Printf("Player,%s wins \n", winner)
 					break
 				}
 			}
@@ -148,7 +148,7 @@ func play() {
 			if ttt[4] == ttt[5] {
 				if ttt[3] != "" {
 					winner = ttt[3]
-					fmt.Printf("Player,%s wins :\n", winner)
+					fmt.Printf("Player,%s wins \n", winner)
 					break
 				}
 
@@ -159,7 +159,7 @@ func play() {
 			if ttt[7] == ttt[8] {
 				if ttt[6] != "" {
 					winner = ttt[6]
-					fmt.Printf("Player,%s wins :\n", winner)
+					fmt.Printf("Player,%s wins \n", winner)
 					break
 				}
 			}
@@ -169,7 +169,7 @@ func play() {
 			if ttt[4] == ttt[8] {
 				if ttt[0] != "" {
 					winner = ttt[0]
-					fmt.Printf("Player,%s wins :\n", winner)
+					fmt.Printf("Player,%s wins \n", winner)
 					break
 				}
 			}
@@ -179,7 +179,7 @@ func play() {
 			if ttt[4] == ttt[6] {
 				if ttt[4] != "" {
 					winner = ttt[4]
-					fmt.Printf("Player,%s wins :\n", winner)
+					fmt.Printf("Player,%s wins \n", winner)
 					break
 				}
 			}
@@ -189,7 +189,7 @@ func play() {
 			if ttt[3] == ttt[6] {
 				if ttt[3] != "" {
 					winner = ttt[3]
-					fmt.Printf("Player,%s wins :\n", winner)
+					fmt.Printf("Player,%s wins \n", winner)
 					break
 				}
 			}
@@ -198,8 +198,9 @@ func play() {
 			if ttt[4] == ttt[7] {
 				if ttt[7] != "" {
 					winner = ttt[7]
-					fmt.Printf("Player,%s wins :\n", winner)
+					fmt.Printf("Player,%s wins \n", winner)
 					break
+
 				}
 			}
 		}
@@ -208,21 +209,18 @@ func play() {
 			if ttt[5] == ttt[8] {
 				if ttt[5] != "" {
 					winner = ttt[5]
-					fmt.Printf("Player,%s wins :\n", winner)
+					fmt.Printf("Player,%s wins \n", winner)
 					break
-				}
-			}
-		}
-		var x int
-		if ttt[x] != "" && ttt[x+1] != "" && ttt[x+2] != "" && ttt[x+3] != "" && ttt[x+4] != "" && ttt[x+5] != "" && ttt[x+6] != "" && ttt[x+7] != "" && ttt[x+8] != "" {
-			for i := 0; i < len(ttt); i++ {
-				if i == len(ttt)-1 {
-					fmt.Println("It's a draw!")
-				}
-			}
-			break
-		}
 
+				}
+			}
+		}
+		if ttt[0] != "" && ttt[1] != "" && ttt[2] != "" && ttt[3] != "" && ttt[4] != "" && ttt[5] != "" && ttt[6] != "" && ttt[7] != "" && ttt[8] != "" {
+
+			fmt.Println("It's a draw!")
+			break
+
+		}
 	}
 
 }
@@ -230,6 +228,7 @@ func play() {
 func main() {
 
 	boardprinter()
+
 	play()
 
 }
