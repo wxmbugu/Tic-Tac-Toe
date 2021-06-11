@@ -213,23 +213,18 @@ func play() {
 				}
 			}
 		}
-		draw()
-		break
-
-	}
-
-}
-
-func draw() {
-	var ttt [9]string
-	var x int
-	if ttt[x] != "" && ttt[x+1] != "" && ttt[x+2] != "" && ttt[x+3] != "" && ttt[x+4] != "" && ttt[x+5] != "" && ttt[x+6] != "" && ttt[x+7] != "" && ttt[x+8] != "" {
-		for i := 0; i < len(ttt); i++ {
-			if i == len(ttt)-1 {
-				fmt.Println("It's a draw!")
+		var x int
+		if ttt[x] != "" && ttt[x+1] != "" && ttt[x+2] != "" && ttt[x+3] != "" && ttt[x+4] != "" && ttt[x+5] != "" && ttt[x+6] != "" && ttt[x+7] != "" && ttt[x+8] != "" {
+			for i := 0; i < len(ttt); i++ {
+				if i == len(ttt)-1 {
+					fmt.Println("It's a draw!")
+				}
 			}
+			break
 		}
+
 	}
+
 }
 
 func main() {
