@@ -130,11 +130,11 @@ func placepiece(board *[9]string, position string, player string) {
 	}
 }
 
-func play(board *[9]string) {
+func play() {
 	var ttt [9]string
 	var position string
 
-	for true {
+	for {
 		cpuPos := randomStr(1)
 		placepiece(&ttt, position, "player")
 		placepiece(&ttt, cpuPos, "cpu")
@@ -142,8 +142,8 @@ func play(board *[9]string) {
 		//Wins by matching the first row
 		if ttt[0] == ttt[1] {
 			if ttt[1] == ttt[2] {
-				if ttt[0] != "" {
-					fmt.Printf("Player,%s wins :\n", position)
+				if ttt[2] != "" {
+					fmt.Printf("Player,%s wins :\n", ttt[2])
 					break
 				}
 			}
@@ -151,61 +151,74 @@ func play(board *[9]string) {
 		//Wins by matching the middle  row
 		if ttt[3] == ttt[4] {
 			if ttt[4] == ttt[5] {
-				fmt.Printf("Player,%s wins :\n", position)
-				break
+				if ttt[3] != "" {
+					fmt.Printf("Player,%s wins :\n", ttt[3])
+					break
+				}
+
 			}
 		}
 		//Wins by matching the last row
 		if ttt[6] == ttt[7] {
 			if ttt[7] == ttt[8] {
-				fmt.Printf("Player,%s wins :\n", position)
-				break
+				if ttt[6] != "" {
+					fmt.Printf("Player,%s wins :\n", ttt[6])
+					break
+				}
 			}
 		}
 		//Wins by matching the left diagnol row
 		if ttt[0] == ttt[4] {
 			if ttt[4] == ttt[8] {
-				fmt.Printf("Player,%s wins :\n", position)
-				break
+				if ttt[0] != "" {
+					fmt.Printf("Player,%s wins :\n", ttt[0])
+					break
+				}
 			}
 		}
 		//Wins by matching the right diagnol row
 		if ttt[2] == ttt[4] {
 			if ttt[4] == ttt[6] {
-				fmt.Printf("Player,%s wins :\n", position)
-				break
+				if ttt[4] != "" {
+					fmt.Printf("Player,%s wins :\n", ttt[4])
+					break
+				}
 			}
 		}
-		//wins by matching the first row
+		//wins by matching the first column
 		if ttt[0] == ttt[3] {
 			if ttt[3] == ttt[6] {
-				fmt.Printf("Player,%s wins :\n", position)
-				break
+				if ttt[3] != "" {
+					fmt.Printf("Player,%s wins :\n", ttt[3])
+					break
+				}
 			}
-		}
-		//wins by matching the middle row
+		} //wins by matching the middle column
 		if ttt[1] == ttt[4] {
 			if ttt[4] == ttt[7] {
-				fmt.Printf("Player,%s wins :\n", position)
-				break
+				if ttt[7] != "" {
+					fmt.Printf("Player,%s wins :\n", ttt[7])
+					break
+				}
 			}
 		}
-		//wins by matching the last row
+		//wins by matching the last column
 		if ttt[2] == ttt[5] {
 			if ttt[5] == ttt[8] {
-				fmt.Printf("Player,%s wins :\n", position)
-				break
+				if ttt[5] != "" {
+					fmt.Printf("Player,%s wins :\n", ttt[5])
+					break
+				}
 			}
 		}
-
 	}
+
 }
 
 func main() {
-	var ttt [9]string
 
 	boardprinter()
-	play(&ttt)
+	play()
 
 }
 
