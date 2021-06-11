@@ -38,6 +38,8 @@ func placepiece(board *[9]string, position string, player string) {
 	if player == "cpu" {
 		symbol = "X"
 		fmt.Println("Player X(comp) is playing... ")
+		cpuPos := randomStr(1)
+		position = cpuPos
 	}
 	if player == "player" {
 		symbol = "O"
@@ -57,7 +59,6 @@ func placepiece(board *[9]string, position string, player string) {
 			fmt.Println("Position is filled , enter another position")
 			placepiece(board, position, player)
 		}
-		break
 	case "b":
 		if board[1] == "" {
 			board[1] = symbol
@@ -65,7 +66,6 @@ func placepiece(board *[9]string, position string, player string) {
 			fmt.Println("Position is filled , enter another position")
 			placepiece(board, position, player)
 		}
-		break
 	case "c":
 		if board[2] == "" {
 			board[2] = symbol
@@ -73,7 +73,6 @@ func placepiece(board *[9]string, position string, player string) {
 			fmt.Println("Position is filled , enter another position")
 			placepiece(board, position, player)
 		}
-		break
 	case "d":
 		if board[3] == "" {
 			board[3] = symbol
@@ -81,7 +80,6 @@ func placepiece(board *[9]string, position string, player string) {
 			fmt.Println("Position is filled , enter another position")
 			placepiece(board, position, player)
 		}
-		break
 	case "e":
 		if board[4] == "" {
 			board[4] = symbol
@@ -89,7 +87,6 @@ func placepiece(board *[9]string, position string, player string) {
 			fmt.Println("Position is filled , enter another position")
 			placepiece(board, position, player)
 		}
-		break
 	case "f":
 		if board[5] == "" {
 			board[5] = symbol
@@ -97,7 +94,6 @@ func placepiece(board *[9]string, position string, player string) {
 			fmt.Println("Position is filled , enter another position")
 			placepiece(board, position, player)
 		}
-		break
 	case "g":
 		if board[6] == "" {
 			board[6] = symbol
@@ -105,7 +101,6 @@ func placepiece(board *[9]string, position string, player string) {
 			fmt.Println("Position is filled , enter another position")
 			placepiece(board, position, player)
 		}
-		break
 	case "h":
 		if board[7] == "" {
 			board[7] = symbol
@@ -113,7 +108,6 @@ func placepiece(board *[9]string, position string, player string) {
 			fmt.Println("Position is filled , enter another position")
 			placepiece(board, position, player)
 		}
-		break
 	case "i":
 		if board[8] == "" {
 			board[8] = symbol
@@ -121,7 +115,6 @@ func placepiece(board *[9]string, position string, player string) {
 			fmt.Println("Position is filled , enter another position")
 			placepiece(board, position, player)
 		}
-		break
 	default:
 		fmt.Println("***WARNING***")
 		fmt.Println("That was an invalid entry. Please try again player:", symbol)
@@ -133,6 +126,7 @@ func placepiece(board *[9]string, position string, player string) {
 func play() {
 	var ttt [9]string
 	var position string
+	var winner string
 
 	for {
 		cpuPos := randomStr(1)
@@ -143,7 +137,8 @@ func play() {
 		if ttt[0] == ttt[1] {
 			if ttt[1] == ttt[2] {
 				if ttt[2] != "" {
-					fmt.Printf("Player,%s wins :\n", ttt[2])
+					winner = ttt[2]
+					fmt.Printf("Player,%s wins :\n", winner)
 					break
 				}
 			}
@@ -152,7 +147,8 @@ func play() {
 		if ttt[3] == ttt[4] {
 			if ttt[4] == ttt[5] {
 				if ttt[3] != "" {
-					fmt.Printf("Player,%s wins :\n", ttt[3])
+					winner = ttt[3]
+					fmt.Printf("Player,%s wins :\n", winner)
 					break
 				}
 
@@ -162,7 +158,8 @@ func play() {
 		if ttt[6] == ttt[7] {
 			if ttt[7] == ttt[8] {
 				if ttt[6] != "" {
-					fmt.Printf("Player,%s wins :\n", ttt[6])
+					winner = ttt[6]
+					fmt.Printf("Player,%s wins :\n", winner)
 					break
 				}
 			}
@@ -171,7 +168,8 @@ func play() {
 		if ttt[0] == ttt[4] {
 			if ttt[4] == ttt[8] {
 				if ttt[0] != "" {
-					fmt.Printf("Player,%s wins :\n", ttt[0])
+					winner = ttt[0]
+					fmt.Printf("Player,%s wins :\n", winner)
 					break
 				}
 			}
@@ -180,7 +178,8 @@ func play() {
 		if ttt[2] == ttt[4] {
 			if ttt[4] == ttt[6] {
 				if ttt[4] != "" {
-					fmt.Printf("Player,%s wins :\n", ttt[4])
+					winner = ttt[4]
+					fmt.Printf("Player,%s wins :\n", winner)
 					break
 				}
 			}
@@ -189,7 +188,8 @@ func play() {
 		if ttt[0] == ttt[3] {
 			if ttt[3] == ttt[6] {
 				if ttt[3] != "" {
-					fmt.Printf("Player,%s wins :\n", ttt[3])
+					winner = ttt[3]
+					fmt.Printf("Player,%s wins :\n", winner)
 					break
 				}
 			}
@@ -197,7 +197,8 @@ func play() {
 		if ttt[1] == ttt[4] {
 			if ttt[4] == ttt[7] {
 				if ttt[7] != "" {
-					fmt.Printf("Player,%s wins :\n", ttt[7])
+					winner = ttt[7]
+					fmt.Printf("Player,%s wins :\n", winner)
 					break
 				}
 			}
@@ -206,13 +207,29 @@ func play() {
 		if ttt[2] == ttt[5] {
 			if ttt[5] == ttt[8] {
 				if ttt[5] != "" {
-					fmt.Printf("Player,%s wins :\n", ttt[5])
+					winner = ttt[5]
+					fmt.Printf("Player,%s wins :\n", winner)
 					break
 				}
 			}
 		}
+		draw()
+		break
+
 	}
 
+}
+
+func draw() {
+	var ttt [9]string
+	var x int
+	if ttt[x] != "" && ttt[x+1] != "" && ttt[x+2] != "" && ttt[x+3] != "" && ttt[x+4] != "" && ttt[x+5] != "" && ttt[x+6] != "" && ttt[x+7] != "" && ttt[x+8] != "" {
+		for i := 0; i < len(ttt); i++ {
+			if i == len(ttt)-1 {
+				fmt.Println("It's a draw!")
+			}
+		}
+	}
 }
 
 func main() {
